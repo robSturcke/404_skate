@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import products from '../products.json';
-import useCart from '../hooks/use-cart';
+import { useCart } from '../hooks/use-cart';
 
 export default function Home() {
   const { subtotal, totalItems, addToCart, checkout } = useCart();
@@ -17,17 +17,6 @@ export default function Home() {
         <h1 className={styles.title}>404 Skateboards</h1>
 
         <p className={styles.description}>The hardest to find </p>
-
-        <p className={styles.description}>
-          <strong>Items: </strong>
-          {totalItems}
-          <br />
-          <strong>Total Cost: </strong>${subtotal}
-          <br />
-          <button className={styles.button} onClick={checkout}>
-            Check Out
-          </button>
-        </p>
 
         <ul className={styles.grid}>
           {products.map((product) => {
