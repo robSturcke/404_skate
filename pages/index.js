@@ -30,18 +30,18 @@ export default function Home() {
                     <h3>{title}</h3>
                     <p>{price}</p>
                     <p>{description}</p>
-                    <div>
-                      <button
-                        className={styles.button}
-                        onClick={() => {
-                          addToCart({ id });
-                        }}
-                      >
-                        Add To Cart
-                      </button>
-                    </div>
                   </a>
                 </Link>
+                <div>
+                  <button
+                    className={styles.button}
+                    onClick={() => {
+                      addToCart({ id });
+                    }}
+                  >
+                    Add To Cart
+                  </button>
+                </div>
               </li>
             );
           })}

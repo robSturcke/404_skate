@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from '../components/nav';
 import { CartContext, useCartState } from '../hooks/use-cart';
 
