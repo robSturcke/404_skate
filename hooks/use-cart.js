@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import products from '../products.json';
 import { initiateCheckout } from '../lib/payments';
 
@@ -10,6 +10,20 @@ export const CartContext = createContext();
 
 export function useCartState() {
   const [cart, updateCart] = useState(defaultCart);
+
+  useEffect(() => {
+    const stateFromStorage = window.localStorage.getItem('fourOFourSkate_cart');
+    const data = stateFromStorage && JSON.parse(stateFromStorage);
+    if (data) {
+      updateCart(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    const data = JSON.stringify(cart);
+    window.localStorage.setItem('fourOFourSkate_cart', data);
+  }, [cart]);
+
   const cartItems = Object.keys(cart.products).map((key) => {
     const product = products.find(({ id }) => `${id}` === `${key}`);
     return {

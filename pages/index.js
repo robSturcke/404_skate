@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import products from '../products.json';
 import { useCart } from '../hooks/use-cart';
 
 export default function Home() {
-  const { subtotal, totalItems, addToCart, checkout } = useCart();
+  const { addToCart } = useCart();
 
   return (
     <div className={styles.container}>
@@ -23,20 +24,24 @@ export default function Home() {
             const { id, title, description, image, price } = product;
             return (
               <li key={id} className={styles.card}>
-                <img src={image} alt={title} />
-                <h3>{title}</h3>
-                <p>{price}</p>
-                <p>{description}</p>
-                <div>
-                  <button
-                    className={styles.button}
-                    onClick={() => {
-                      addToCart({ id });
-                    }}
-                  >
-                    Add To Cart
-                  </button>
-                </div>
+                <Link href={`/products/${id}`}>
+                  <a>
+                    <img src={image} alt={title} />
+                    <h3>{title}</h3>
+                    <p>{price}</p>
+                    <p>{description}</p>
+                    <div>
+                      <button
+                        className={styles.button}
+                        onClick={() => {
+                          addToCart({ id });
+                        }}
+                      >
+                        Add To Cart
+                      </button>
+                    </div>
+                  </a>
+                </Link>
               </li>
             );
           })}
