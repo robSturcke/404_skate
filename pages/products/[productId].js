@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../../styles/Product.module.css';
 import { useCart } from '../../hooks/use-cart';
 import products from '../../products.json';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 
 export default function Product({ product }) {
   const { id, title, image, price, description } = product;
@@ -24,12 +24,7 @@ export default function Product({ product }) {
               <p className={styles.description}>{description}</p>
               <p className={styles.description}>${price.toFixed(2)}</p>
               <p>
-                <button
-                  className={styles.button}
-                  onClick={() => addToCart({ id })}
-                >
-                  Buy
-                </button>
+                <Button onClick={() => addToCart({ id })}>Buy</Button>
               </p>
             </div>
           </Col>

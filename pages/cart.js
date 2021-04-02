@@ -3,7 +3,7 @@ import styles from '../styles/Cart.module.css';
 import { useCart } from '../hooks/use-cart.js';
 import Table from '../components/table';
 import products from '../products.json';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 
 const columns = [
   {
@@ -81,9 +81,7 @@ export default function Cart() {
             <Table className={styles.table} data={data} columns={columns} />
 
             <p className={styles.checkout}>
-              <button className={styles.button} onClick={checkout}>
-                Check Out
-              </button>
+              <Button onClick={checkout}>Check Out</Button>
             </p>
           </Col>
         </Row>
