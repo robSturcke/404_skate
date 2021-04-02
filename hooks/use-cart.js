@@ -64,6 +64,9 @@ export function useCartState() {
   }
 
   function checkout() {
+    if (quantity === 0) {
+      alert('Sorry no items in your cart.');
+    }
     initiateCheckout({
       lineItems: cartItems.map(({ id, quantity }) => {
         return {

@@ -3,6 +3,7 @@ import styles from '../styles/Cart.module.css';
 import { useCart } from '../hooks/use-cart.js';
 import Table from '../components/table';
 import products from '../products.json';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const columns = [
   {
@@ -23,7 +24,7 @@ const columns = [
   },
 ];
 
-export default function Home() {
+export default function Cart() {
   const { cartItems, checkout, updateItem } = useCart();
 
   const data = cartItems.map(({ id, quantity, pricePerUnit }) => {
@@ -68,34 +69,25 @@ export default function Home() {
   });
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Shopping Cart - Space Jelly</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Shopping Cart</title>
       </Head>
+      <Container fluid>
+        <Row>
+          <Col>
+            <h1 className={styles.title}>Cart</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Cart</h1>
+            <Table className={styles.table} data={data} columns={columns} />
 
-        <Table className={styles.table} data={data} columns={columns} />
-
-        <p className={styles.checkout}>
-          <button className={styles.button} onClick={checkout}>
-            Check Out
-          </button>
-        </p>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+            <p className={styles.checkout}>
+              <button className={styles.button} onClick={checkout}>
+                Check Out
+              </button>
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

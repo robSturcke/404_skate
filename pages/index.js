@@ -3,61 +3,53 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import products from '../products.json';
 import { useCart } from '../hooks/use-cart';
+import { Col, Container, Row, Button } from 'react-bootstrap';
+import Logo from '../components/logo';
 
 export default function Home() {
   const { addToCart } = useCart();
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>404 Skateboards</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Container fluid>
+        <Row>
+          <Col md="12">
+            <div className="text-center">
+              <Logo width="350" />
+            </div>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>404 Skateboards</h1>
-
-        <p className={styles.description}>The hardest to find </p>
-
-        <ul className={styles.grid}>
+            <p className={styles.description}>The hardest to find </p>
+          </Col>
           {products.map((product) => {
             const { id, title, description, image, price } = product;
             return (
-              <li key={id} className={styles.card}>
+              <Col md="4" sm="6" key={id}>
                 <Link href={`/products/${id}`}>
                   <a>
-                    <img src={image} alt={title} />
+                    <img src={image} className="img-fluid" alt={title} />
                     <h3>{title}</h3>
                     <p>{price}</p>
                     <p>{description}</p>
                   </a>
                 </Link>
                 <div>
-                  <button
-                    className={styles.button}
+                  <Button
+                    color="primary"
                     onClick={() => {
                       addToCart({ id });
                     }}
                   >
                     Add To Cart
-                  </button>
+                  </Button>
                 </div>
-              </li>
+              </Col>
             );
           })}
-        </ul>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        </Row>
+      </Container>
+    </>
   );
 }
