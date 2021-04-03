@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import styles from '../../styles/Product.module.css';
-import { useCart } from '../../hooks/use-cart';
+import { useCart } from 'react-use-cart';
 import products from '../../products.json';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 
 export default function Product({ product }) {
   const { id, title, image, price, description } = product;
-  const { addToCart } = useCart();
+  const { addItem } = useCart();
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Product({ product }) {
               <p className={styles.description}>{description}</p>
               <p className={styles.description}>${price.toFixed(2)}</p>
               <p>
-                <Button onClick={() => addToCart({ id })}>Buy</Button>
+                <Button onClick={() => addItem({ id })}>Buy</Button>
               </p>
             </div>
           </Col>
