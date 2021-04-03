@@ -2,12 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import products from '../products.json';
-import { useCart } from '../hooks/use-cart';
+import { useCart } from 'react-use-cart';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import Logo from '../components/logo';
 
 export default function Home() {
-  const { addToCart } = useCart();
+  const { addItem } = useCart();
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function Home() {
                   <Button
                     color="primary"
                     onClick={() => {
-                      addToCart({ id });
+                      addItem(product);
                     }}
                   >
                     Add To Cart

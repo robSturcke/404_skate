@@ -2,17 +2,15 @@ import Head from 'next/head';
 import '../styles/App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from '../components/navigation';
-import { CartContext, useCartState } from '../hooks/use-cart';
+import { CartProvider } from 'react-use-cart';
 
 function MyApp({ Component, pageProps }) {
-  const cart = useCartState();
-
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CartContext.Provider value={cart}>
+      <CartProvider>
         <div className="spacer" />
         <Navigation />
         <main>
@@ -31,7 +29,7 @@ function MyApp({ Component, pageProps }) {
             </a>
           </div>
         </footer>
-      </CartContext.Provider>
+      </CartProvider>
     </>
   );
 }

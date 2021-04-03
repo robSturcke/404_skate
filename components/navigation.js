@@ -1,10 +1,10 @@
-import { useCart } from '../hooks/use-cart';
+import { useCart } from 'react-use-cart';
 import Link from 'next/link';
 import Logo from './logo';
 import { Navbar, Nav } from 'react-bootstrap';
 
 const Navigation = () => {
-  const { subtotal } = useCart();
+  const { totalItems } = useCart();
   return (
     <Navbar bg="light" expand="lg" fixed="top">
       <Navbar.Brand>
@@ -19,7 +19,7 @@ const Navigation = () => {
         <Nav className="ml-auto">
           <div className="nav-item">
             <Link className="nav-link" href="/cart">
-              <a>${subtotal.toFixed(2)}</a>
+              <a>{totalItems}</a>
             </Link>
           </div>
         </Nav>
