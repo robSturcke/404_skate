@@ -24,7 +24,7 @@ export default function Product({ product }) {
               <p className={styles.description}>{description}</p>
               <p className={styles.description}>${price.toFixed(2)}</p>
               <p>
-                <Button onClick={() => addItem({ id })}>Buy</Button>
+                <Button onClick={() => addItem(product)}>Buy</Button>
               </p>
             </div>
           </Col>
