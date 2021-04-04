@@ -15,16 +15,18 @@ export default function Product({ product }) {
       </Head>
       <Container fluid>
         <Row>
-          <Col>
+          <Col md="4">
             <div className={styles.productImage}>
               <img src={image} alt={title} />
             </div>
+          </Col>
+          <Col md="8">
             <div>
               <h1>{title}</h1>
               <p className={styles.description}>{description}</p>
               <p className={styles.description}>${price.toFixed(2)}</p>
               <p>
-                <Button onClick={() => addItem(product)}>Buy</Button>
+                <Button onClick={() => addItem(product)}>Add to Cart</Button>
               </p>
             </div>
           </Col>

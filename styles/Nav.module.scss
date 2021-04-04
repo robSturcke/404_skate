@@ -1,10 +1,23 @@
-a.nav_link {
-  color: rgb(0, 0, 0);
-  &:hover {
-    text-decoration: none;
-  }
-  .nav_icon {
-    display: inline-block;
-    width: 25px;
+.nav_wrap {
+  z-index: 1029;
+  background: rgb(245, 245, 245);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 105px;
+  nav {
+    max-width: 1280px;
+    margin: auto;
+    a.nav_link {
+      color: rgb(0, 0, 0);
+      &:hover {
+        text-decoration: none;
+      }
+      .nav_icon {
+        display: inline-block;
+        width: 25px;
+      }
+    }
   }
 }
