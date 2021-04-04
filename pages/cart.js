@@ -19,11 +19,6 @@ const columns = [
     columnId: 'quantity',
     Header: 'Quantity',
   },
-
-  {
-    columnId: 'total',
-    Header: 'Item Total',
-  },
 ];
 
 export default function Cart() {
@@ -98,9 +93,8 @@ export default function Cart() {
         <Row>
           <Col>
             <h1 className={styles.title}>Cart</h1>
-
             <Table className={styles.table} data={data} columns={columns} />
-
+            Total: ${cartTotal.toFixed(2)}
             <p className={styles.checkout}>
               <Button onClick={checkout}>Check Out</Button>
             </p>
