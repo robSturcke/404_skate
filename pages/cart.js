@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '../styles/Cart.module.scss';
 import productStyles from '../styles/Product.module.scss';
 import { useCart } from 'react-use-cart';
 import CartTable from '../components/cart_table';
@@ -24,7 +23,7 @@ const columns = [
   },
 ];
 
-export default function Cart() {
+export default function Home() {
   const {
     isEmpty,
     items,
@@ -96,9 +95,7 @@ export default function Cart() {
         <Row>
           <Col>
             <div className="text-center">
-              <Fade top>
-                <YourCartLogo width="450" baseLayer="img-fluid" />
-              </Fade>
+              <YourCartLogo width="450" baseLayer="img-fluid" />
             </div>
             <CartTable data={data} columns={columns} />
             <Fade right cascade>
