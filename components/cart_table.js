@@ -7,32 +7,32 @@ const CartTable = ({ data, columns }) => {
   });
 
   return (
-    <Fade bottom cascade>
-      <Table responsive hover>
-        <thead>
-          <tr>
-            {columns.map(({ columnId, Header }) => {
-              return (
-                <td key={columnId}>
-                  <strong>{Header}</strong>
-                </td>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, index) => {
+    <Table responsive hover>
+      <thead>
+        <tr>
+          {columns.map(({ columnId, Header }) => {
             return (
-              <tr key={index}>
+              <td key={columnId}>
+                <strong>{Header}</strong>
+              </td>
+            );
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, index) => {
+          return (
+            <tr key={index}>
+              <Fade bottom cascade>
                 {row.map((cell, index) => {
                   return <td key={index}>{cell}</td>;
                 })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </Fade>
+              </Fade>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
   );
 };
 
