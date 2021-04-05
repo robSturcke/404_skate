@@ -1,15 +1,18 @@
 import Head from 'next/head';
-import styles from '../styles/Cart.module.css';
+import styles from '../styles/Cart.module.scss';
+import productStyles from '../styles/Product.module.scss';
 import { useCart } from 'react-use-cart';
-import Table from '../components/table';
+import CartTable from '../components/cart_table';
 import products from '../products.json';
 import { initiateCheckout } from '../lib/payments.js';
 import { Col, Container, Row, Button } from 'react-bootstrap';
+import Fade from 'react-reveal/Fade';
+import YourCartLogo from '../components/your_cart_logo';
 
 const columns = [
   {
     columnId: 'title',
-    Header: 'Product Name',
+    Header: 'Product',
   },
   {
     columnId: 'pricePerUnit',
@@ -56,17 +59,17 @@ export default function Cart() {
         <div>
           {quantity}
           <span className="ml-1">
-            <Button variant="outline-success" onClick={increment}>
+            <Button variant="outline-dark" onClick={increment}>
               +
             </Button>
           </span>
           <span className="ml-1">
-            <Button variant="outline-warning" onClick={decrement}>
+            <Button variant="outline-dark" onClick={decrement}>
               -
             </Button>
           </span>
           <span className="ml-1">
-            <Button variant="outline-danger" onClick={remove}>
+            <Button variant="outline-dark" onClick={remove}>
               x
             </Button>
           </span>
@@ -92,12 +95,22 @@ export default function Cart() {
       <Container fluid>
         <Row>
           <Col>
-            <h1 className={styles.title}>Cart</h1>
-            <Table className={styles.table} data={data} columns={columns} />
-            Total: ${cartTotal.toFixed(2)}
-            <p className={styles.checkout}>
-              <Button onClick={checkout}>Check Out</Button>
-            </p>
+            <div className="text-center">
+              <Fade top>
+                <YourCartLogo width="450" baseLayer="img-fluid" />
+              </Fade>
+            </div>
+            <CartTable data={data} columns={columns} />
+            <Fade right cascade>
+              <div className="float-right py-3">
+                <h3>
+                  <small>Total: </small>${cartTotal.toFixed(2)}{' '}
+                  <button className={productStyles.cart_btn} onClick={checkout}>
+                    Check Out
+                  </button>
+                </h3>
+              </div>
+            </Fade>
           </Col>
         </Row>
       </Container>
