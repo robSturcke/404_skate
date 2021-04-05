@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../../styles/Product.module.css';
+import styles from '../../styles/Product.module.scss';
 import { useCart } from 'react-use-cart';
 import products from '../../products.json';
 import { Col, Container, Row, Button } from 'react-bootstrap';
@@ -16,9 +16,7 @@ export default function Product({ product }) {
       <Container fluid>
         <Row>
           <Col md="4">
-            <div className={styles.productImage}>
-              <img src={image} alt={title} />
-            </div>
+            <img src={image} alt={title} className="img-fluid" />
           </Col>
           <Col md="8">
             <div>
@@ -26,7 +24,12 @@ export default function Product({ product }) {
               <p className={styles.description}>{description}</p>
               <p className={styles.description}>${price.toFixed(2)}</p>
               <p>
-                <Button onClick={() => addItem(product)}>Add to Cart</Button>
+                <button
+                  className={styles.cart_btn}
+                  onClick={() => addItem(product)}
+                >
+                  Add to Cart
+                </button>
               </p>
             </div>
           </Col>

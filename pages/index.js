@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Index.module.scss';
 import products from '../products.json';
 import { useCart } from 'react-use-cart';
 import { Col, Container, Row, Button } from 'react-bootstrap';
@@ -28,13 +28,15 @@ export default function Home() {
             return (
               <Col md="4" sm="6" key={id}>
                 <Link href={`/products/${id}`}>
-                  <a>
-                    <img src={image} className="img-fluid" alt={title} />
+                  <a className={styles.product_link}>
+                    <img src={image} className="img-fluid my-1" alt={title} />
                     <h3>{title}</h3>
-                    <p>{price}</p>
-                    <p>{description}</p>
                   </a>
                 </Link>
+                <p>{description}</p>
+                <div className="mb-1">
+                  <strong>${price.toFixed(2)}</strong>
+                </div>
                 <div>
                   <Button
                     color="primary"
