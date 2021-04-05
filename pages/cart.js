@@ -51,26 +51,25 @@ export default function Cart() {
       const increment = () => updateItemQuantity(id, quantity + 1);
       const decrement = () => updateItemQuantity(id, quantity - 1);
       const remove = () => removeItem(id);
-      function handleOnSubmit(e) {
-        e.preventDefault();
-
-        const { currentTarget } = e;
-        const inputs = Array.from(currentTarget.elements);
-        const quantity = inputs.find((input) => input.name === 'quantity')
-          ?.value;
-
-        updateItem({
-          id,
-          quantity: quantity && parseInt(quantity),
-        });
-      }
 
       return (
         <div>
           {quantity}
-          <button onClick={increment}>+</button>
-          <button onClick={decrement}>-</button>
-          <button onClick={remove}>x</button>
+          <span className="ml-1">
+            <Button variant="outline-success" onClick={increment}>
+              +
+            </Button>
+          </span>
+          <span className="ml-1">
+            <Button variant="outline-warning" onClick={decrement}>
+              -
+            </Button>
+          </span>
+          <span className="ml-1">
+            <Button variant="outline-danger" onClick={remove}>
+              x
+            </Button>
+          </span>
         </div>
       );
     };
@@ -87,6 +86,7 @@ export default function Cart() {
   return (
     <>
       <Head>
+        <link rel="icon" href="/favicon.ico" />
         <title>Shopping Cart</title>
       </Head>
       <Container fluid>

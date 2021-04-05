@@ -3,9 +3,11 @@ import Link from 'next/link';
 import Logo from './logo';
 import { Navbar, Nav } from 'react-bootstrap';
 import styles from '../styles/Nav.module.scss';
+import EmptyIcon from './empty_icon';
+import FilledIcon from './filled_icon';
 
 const Navigation = () => {
-  const { totalItems } = useCart();
+  const { totalItems, isEmpty } = useCart();
   return (
     <div className={styles.nav_wrap}>
       <Navbar fixed="top">
@@ -21,13 +23,10 @@ const Navigation = () => {
             <Link className="nav-link" href="/cart">
               <a className={styles.nav_link}>
                 {totalItems}{' '}
-                {!totalItems ? (
-                  <img
-                    src="images/cart-outline.svg"
-                    className={styles.nav_icon}
-                  />
+                {isEmpty ? (
+                  <EmptyIcon baseLayer={styles.nav_icon} />
                 ) : (
-                  <img src="images/cart.svg" className={styles.nav_icon} />
+                  <FilledIcon baseLayer={styles.nav_icon} />
                 )}
               </a>
             </Link>

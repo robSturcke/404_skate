@@ -20,12 +20,13 @@ function MyApp({ Component, pageProps }) {
         </main>
         <footer>
           <div className="my-5">
+            ©{' '}
             <a
               href="https://rsvision.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              © RSVision {new Date().getFullYear()}
+              RSVision {new Date().getFullYear()}
             </a>
           </div>
         </footer>

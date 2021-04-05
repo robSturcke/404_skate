@@ -23,7 +23,16 @@
 
 footer {
   width: 100%;
-  margin-top: 5rem;
+
   border-top: 1px solid #eaeaea;
   text-align: center;
+  background-color: rgb(245, 245, 245);
+
+  a {
+    color: #ff6d00;
+    &:hover {
+      text-decoration: none;
+      color: darken($color: #ff6d00, $amount: 5%);
+    }
+  }
 }

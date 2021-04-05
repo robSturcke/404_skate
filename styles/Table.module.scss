@@ -1,0 +1,18 @@
+.table {
+  width: 100%;
+  border-spacing: 0;
+  thead td {
+    color: rgb(0, 0, 0);
+    background-color: rgb(245, 245, 245);
+  }
+  tr:last-child td {
+    border-bottom: 0;
+  }
+  td {
+    padding: 1em;
+    border-bottom: solid 1px #cfd7de;
+  }
+  td:not(:first-child) {
+    text-align: center;
+  }
+}

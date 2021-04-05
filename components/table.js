@@ -1,4 +1,4 @@
-import styles from '../styles/Table.module.css';
+import styles from '../styles/Table.module.scss';
 
 const Table = ({ className, data, columns }) => {
   let tableClassName = styles.table;
