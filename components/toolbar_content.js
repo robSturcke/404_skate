@@ -18,58 +18,63 @@ export default function ToolbarContent() {
     });
   }
 
-  if (isEmpty) return <h2 className="mt-3 text-center">Your cart is empty</h2>;
+  if (isEmpty) return <h2 className="my-3 text-center">Your cart is empty.</h2>;
 
   return (
     <div className="toolbar_content">
-      <Container fluid>
-        <Row>
-          {items.map((product) => {
-            const { id, title, image, price, quantity } = product;
-            const increment = () => updateItemQuantity(id, quantity + 1);
-            const decrement = () => updateItemQuantity(id, quantity - 1);
-            return (
-              <>
-                <Col md="12">
-                  <img width="50" className="p-1" src={image} alt={title} />
-                  <span>{title} | </span>
-                  <span>${price.toFixed(2)}</span>
-                </Col>
-                <Col md="12">
-                  <div className="float-right">
-                    <strong>{quantity}</strong>
-                    <span className="ml-1">
-                      <Button
-                        variant="outline-dark"
-                        onClick={increment}
-                        size="sm"
-                      >
-                        +
-                      </Button>
-                    </span>
-                    <span className="ml-1">
-                      <Button
-                        variant="outline-dark"
-                        onClick={decrement}
-                        size="sm"
-                      >
-                        -
-                      </Button>
-                    </span>
-                  </div>
-                </Col>
-              </>
-            );
-          })}
-          <Col md="12">
-            <div className="text-center my-3">
-              <button className={productStyles.cart_btn} onClick={checkout}>
-                CHECKOUT
-              </button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className="content">
+        <Container fluid>
+          <Row>
+            {items.map((product) => {
+              const { id, title, image, price, quantity } = product;
+              const increment = () => updateItemQuantity(id, quantity + 1);
+              const decrement = () => updateItemQuantity(id, quantity - 1);
+              return (
+                <>
+                  <Col md="12">
+                    <img width="50" className="p-1" src={image} alt={title} />
+                    <span>{title} | </span>
+                    <span>${price.toFixed(2)}</span>
+                  </Col>
+                  <Col md="12">
+                    <div className="float-right">
+                      <strong>{quantity}</strong>
+                      <span className="ml-1">
+                        <Button
+                          variant="outline-dark"
+                          onClick={increment}
+                          size="sm"
+                        >
+                          +
+                        </Button>
+                      </span>
+                      <span className="ml-1">
+                        <Button
+                          variant="outline-dark"
+                          onClick={decrement}
+                          size="sm"
+                        >
+                          -
+                        </Button>
+                      </span>
+                    </div>
+                  </Col>
+                </>
+              );
+            })}
+            <Col md="12">
+              <div className="float-right my-3">
+                Total: <strong>${cartTotal.toFixed(2)}</strong>
+              </div>
+              <div className="text-center my-3">
+                <button className={productStyles.cart_btn} onClick={checkout}>
+                  CHECKOUT
+                </button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }
