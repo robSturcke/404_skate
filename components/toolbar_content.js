@@ -18,6 +18,8 @@ export default function ToolbarContent() {
     });
   }
 
+  if (isEmpty) return <h2 className="mt-3 text-center">Your cart is empty</h2>;
+
   return (
     <div className="toolbar_content">
       <Container fluid>

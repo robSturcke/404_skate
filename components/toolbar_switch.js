@@ -6,7 +6,7 @@ import FilledIcon from './filled_icon';
 import styles from '../styles/Nav.module.scss';
 
 export default function ToolbarSwitch() {
-  const [on, setOn] = useToggle();
+  const [on, setOn] = useToggle(false);
   const { totalItems } = useCart();
   const toggle = () => setOn((e) => !e);
   return (
