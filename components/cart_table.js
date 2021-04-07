@@ -1,13 +1,16 @@
-import Fade from 'react-reveal/Fade';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
+import { useCart } from 'react-use-cart';
 
 const CartTable = ({ data, columns }) => {
+  const { removeItem } = useCart();
   const rows = [...new Array(data.length)].map((item, index) => {
     return columns.map(({ columnId }) => data[index][columnId]);
   });
 
+  const remove = () => removeItem(id);
+
   return (
-    <Table responsive hover>
+    <table>
       <thead>
         <tr>
           {columns.map(({ columnId, Header }) => {
@@ -23,16 +26,17 @@ const CartTable = ({ data, columns }) => {
         {rows.map((row, index) => {
           return (
             <tr key={index}>
-              <Fade bottom cascade>
-                {row.map((cell, index) => {
-                  return <td key={index}>{cell}</td>;
-                })}
-              </Fade>
+              {row.map((cell, index) => {
+                return <td key={index}>{cell}</td>;
+              })}
+              <Button variant="outline-dark" onClick={remove}>
+                x
+              </Button>
             </tr>
           );
         })}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

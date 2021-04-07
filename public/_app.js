@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { ToggleProvider } from '../context/toolbar_context';
 import '../styles/App.scss';
+import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from '../components/navigation';
-import Toolbar from '../components/toolbar';
 import { CartProvider } from 'react-use-cart';
 
 function MyApp({ Component, pageProps }) {
@@ -13,16 +12,13 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CartProvider>
-        <ToggleProvider>
-          <div className="spacer" />
-          <Navigation />
-          <Toolbar />
-          <main>
-            <div className="content">
-              <Component {...pageProps} />
-            </div>
-          </main>
-        </ToggleProvider>
+        <div className="spacer" />
+        <Navigation />
+        <main>
+          <div className="content">
+            <Component {...pageProps} />
+          </div>
+        </main>
         <footer>
           <div className="my-5">
             ©{' '}

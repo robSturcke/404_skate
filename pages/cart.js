@@ -23,14 +23,8 @@ const columns = [
   },
 ];
 
-export default function Home() {
-  const {
-    isEmpty,
-    items,
-    updateItemQuantity,
-    removeItem,
-    cartTotal,
-  } = useCart();
+export default function Cart() {
+  const { isEmpty, items, updateItemQuantity, cartTotal } = useCart();
 
   if (isEmpty) return <h2 className="mt-3 text-center">Your cart is empty</h2>;
 
@@ -52,7 +46,6 @@ export default function Home() {
     const Quantity = () => {
       const increment = () => updateItemQuantity(id, quantity + 1);
       const decrement = () => updateItemQuantity(id, quantity - 1);
-      const remove = () => removeItem(id);
 
       return (
         <div>
@@ -65,11 +58,6 @@ export default function Home() {
           <span className="ml-1">
             <Button variant="outline-dark" onClick={decrement}>
               -
-            </Button>
-          </span>
-          <span className="ml-1">
-            <Button variant="outline-dark" onClick={remove}>
-              x
             </Button>
           </span>
         </div>
@@ -88,14 +76,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
         <title>Shopping Cart</title>
       </Head>
       <Container fluid>
         <Row>
           <Col>
             <div className="text-center">
-              <YourCartLogo width="450" baseLayer="img-fluid" />
+              <Fade top>
+                <YourCartLogo width="450" baseLayer="img-fluid" />
+              </Fade>
             </div>
             <CartTable data={data} columns={columns} />
             <Fade right cascade>
