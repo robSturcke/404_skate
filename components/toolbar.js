@@ -6,8 +6,8 @@ export default function ToolbarWrapper() {
   const [on] = useToggle();
 
   return (
-    <div className={on ? 'toolbar toolbar_open' : 'toolbar'}>
-      {on ? <ToolbarContent /> : null}
+    <div className={on ? 'toolbar' : 'toolbar toolbar_open'}>
+      {on ? null : <ToolbarContent />}
     </div>
   );
 }
