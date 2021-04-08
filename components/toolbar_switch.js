@@ -10,8 +10,8 @@ export default function ToolbarSwitch() {
   const { totalItems } = useCart();
   const toggle = () => setOn((e) => !e);
   return (
-    <span onClick={toggle}>
-      <span>{totalItems}</span>
+    <span style={{ cursor: 'pointer' }} onClick={toggle}>
+      <span>{totalItems} </span>
       {on ? (
         <EmptyIcon baseLayer="nav_icon" />
       ) : (

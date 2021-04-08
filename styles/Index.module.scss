@@ -1,3 +1,8 @@
 .product_link {
   color: #ff6d00;
+
+  &:hover {
+    color: darken($color: #ff6d00, $amount: 5%);
+    text-decoration: none;
+  }
 }

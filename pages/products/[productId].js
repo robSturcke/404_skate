@@ -14,26 +14,28 @@ export default function Product({ product }) {
         <title>{title}</title>
       </Head>
       <Container fluid>
-        <Row>
-          <Col md="4">
-            <img src={image} alt={title} className="img-fluid" />
-          </Col>
-          <Col md="8">
-            <div>
-              <h1>{title}</h1>
-              <p className={styles.description}>{description}</p>
-              <p className={styles.description}>${price.toFixed(2)}</p>
-              <p>
-                <button
-                  className={styles.cart_btn}
-                  onClick={() => addItem(product)}
-                >
-                  Add to Cart
-                </button>
-              </p>
-            </div>
-          </Col>
-        </Row>
+        <div className="my-3">
+          <Row>
+            <Col md="4">
+              <img src={image} alt={title} className="img-fluid" />
+            </Col>
+            <Col md="8">
+              <div>
+                <h1>{title}</h1>
+                <p className={styles.description}>{description}</p>
+                <p className={styles.description}>${price.toFixed(2)}</p>
+                <p>
+                  <button
+                    className={styles.cart_btn}
+                    onClick={() => addItem(product)}
+                  >
+                    Add to Cart
+                  </button>
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </Container>
     </>
   );
