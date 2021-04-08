@@ -32,6 +32,14 @@ function MyApp({ Component, pageProps }) {
               rel="noopener noreferrer"
             >
               RSVision {new Date().getFullYear()}
+            </a>{' '}
+            {'&'}{' '}
+            <a
+              href="https://robsturcke.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              robSturcke
             </a>
           </div>
         </footer>
